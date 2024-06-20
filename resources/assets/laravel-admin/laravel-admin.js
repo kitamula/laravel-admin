@@ -197,12 +197,21 @@ $('#totop').on('click', function (e) {
 
 })(jQuery);
 
+// pjax ready
 $(document).on('pjax:success', function() {
+    removeEmptyFileInputs();
+});
+
+$(document).ready(function() {
+    removeEmptyFileInputs();
+});
+
+function removeEmptyFileInputs() {
     $('form').on('submit', function() {
         $('input[type=file]').each(function() {
-        if ($(this).val() === '') {
-            $(this).remove();
-        }
+            if ($(this).val() === '') {
+                $(this).remove();
+            }
         });
     });
-});
+}
